@@ -86,7 +86,7 @@ public class Register extends AppCompatActivity {
                         // If successful sending the user to the main activity
                         // If not showing error message
                          if(task.isSuccessful()) {
-                             Toast.makeText(Register.this, "Account Created", Toast.LENGTH_SHORT).show();
+                             Toast.makeText(Register.this, "User Created", Toast.LENGTH_SHORT).show();
                              startActivity(new Intent(getApplicationContext(),MainActivity.class));
 
                          } else {
