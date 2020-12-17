@@ -33,7 +33,7 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         // Initializing variables;
-        mFullName = findViewById(R.id.fulllName);
+        mFullName = findViewById(R.id.fullName);
         mEmail = findViewById(R.id.email);
         mPassword = findViewById(R.id.password);
         mPhone = findViewById(R.id.phone);
@@ -96,5 +96,14 @@ public class Register extends AppCompatActivity {
                 });
             }
         });
+
+        // Redirecting to login page
+        mLoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),Login.class));
+            }
+        });
+
     }
 }
