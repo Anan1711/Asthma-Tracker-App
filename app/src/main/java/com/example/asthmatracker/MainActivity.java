@@ -58,12 +58,12 @@ public class MainActivity extends AppCompatActivity {
         recreate();
     }
 
-    /*public void ClickDashboard(View view){
+    public void ClickProfile(View view){
         //Redirect activity to dashboard
-        redirectActivity(this,);
+        redirectActivity(this,PatientProfile.class);
     }
 
-    public  void ClickAboutUs(View view){
+    /*public  void ClickAboutUs(View view){
         //Redirect activity to about us
         redirectActivity(this,);
     }*/
