@@ -63,10 +63,10 @@ public class MainActivity extends AppCompatActivity {
         redirectActivity(this,PatientProfile.class);
     }
 
-    /*public  void ClickAboutUs(View view){
+    public  void ClickTakeData(View view){
         //Redirect activity to about us
-        redirectActivity(this,);
-    }*/
+        redirectActivity(this,TakeData.class);
+    }
 
     public static void redirectActivity(Activity activity, Class aClass) {
         //Initialize intent
