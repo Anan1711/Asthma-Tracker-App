@@ -1,202 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PatientProfile">
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/wallpaper"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        android:layout_marginTop="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.001">
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="176dp"
-            android:layout_marginTop="90dp"
-            android:layout_marginEnd="176dp"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="81dp"
-        android:layout_height="96dp"
-        android:layout_marginTop="172dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/constraintLayout"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="16dp"
+        android:onClick="ClickLogo"
+        />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="416dp"
-        android:layout_height="449dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Asthma Tracker"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="#FFC107"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="#636363"/>
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="168dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="168dp"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        >
 
         <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
+            android:id="@+id/emailTextView"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="179dp"
-            android:layout_marginTop="22dp"
-            android:layout_marginEnd="178dp"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintTop_toBottomOf="@+id/textView5">
-
-            <ImageView
-                android:id="@+id/email_imageview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.126"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView5"
-                tools:srcCompat="@drawable/ic_baseline_email_24" />
-
-            <TextView
-                android:id="@+id/email_textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/email_imageview"
-                app:layout_constraintHorizontal_bias="0.031"
-                android:text="TextView"
-                android:textSize="18sp"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+            android:layout_weight="1"
+            android:text="Email"
+            android:padding="12dp"
+            android:layout_marginStart="16dp"/>
 
         <ImageView
-            android:id="@+id/fullname_imageview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.126"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/email_imageview"
-            tools:srcCompat="@drawable/ic_baseline_person_24" />
+            android:layout_marginEnd="48dp"
+            android:src="@drawable/ic_baseline_email_24"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        >
 
         <TextView
-            android:id="@+id/fullname_textview"
-            android:layout_width="239dp"
+            android:id="@+id/nameTextView"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="184dp"
-            android:text="TextView"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.031"
-            app:layout_constraintStart_toEndOf="@+id/phone_imageview"
-            app:layout_constraintTop_toBottomOf="@+id/email_textview"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearLayout3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+            android:layout_weight="1"
+            android:text="Full Name"
+            android:padding="12dp"
+            android:layout_marginStart="16dp"/>
 
         <ImageView
-            android:id="@+id/phone_imageview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.126"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/phone_imageview"
-            tools:srcCompat="@drawable/ic_baseline_local_phone_24" />
+            android:layout_marginEnd="48dp"
+            android:src="@drawable/ic_baseline_person_24"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        >
 
         <TextView
-            android:id="@+id/phone_textview"
-            android:layout_width="239dp"
+            android:id="@+id/weightTextView"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="184dp"
-            android:text="TextView"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.031"
-            app:layout_constraintStart_toEndOf="@+id/phone_imageview"
-            app:layout_constraintTop_toBottomOf="@+id/fullName_textview"/>
-        </LinearLayout>
+            android:layout_weight="1"
+            android:text="Weight"
+            android:padding="12dp"
+            android:layout_marginStart="16dp"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="48dp"
+            android:src="@drawable/ic_weight"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        >
+
+        <TextView
+            android:id="@+id/phoneTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Phone"
+            android:padding="12dp"
+            android:layout_marginStart="16dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="48dp"
+            android:src="@drawable/ic_baseline_local_phone_24"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

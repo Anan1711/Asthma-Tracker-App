@@ -77,6 +77,10 @@ public class Login extends AppCompatActivity {
 
                 });
 
+                Intent intent = new Intent(Login.this, PatientProfile.class);
+                intent.putExtra("EMAIL",email);
+                //startActivity(intent);
+
             }
 
         });
