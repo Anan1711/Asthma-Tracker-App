@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:padding="16dp"
     android:id="@+id/take_data"
@@ -12,34 +12,44 @@
         android:id="@+id/btnOnOFF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="-1dp"
-        android:layout_marginRight="58dp"
+        android:padding="20dp"
         android:text="ON/OFF" />
 
     <Button
         android:id="@+id/btnDiscoverable_on_off"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="86dp"
+        android:layout_below="@id/btnOnOFF"
+        android:padding="20dp"
         android:onClick="btnEnableDisable_Discoverable"
         android:text="Enable Discoverable" />
 
     <Button
+        android:id="@+id/btnFindUnpairedDevices"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btnFindUnpairedDevices"
-        android:text="Discover"
-        android:onClick="btnDiscover"/>
+        android:padding="20dp"
+        android:layout_below="@id/btnDiscoverable_on_off"
+        android:onClick="btnDiscover"
+        android:text="Discover" />
 
     <ListView
         android:id="@+id/lvNewDevices"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_below="@id/btnFindUnpairedDevices"
-        android:layout_marginTop="104dp" />
+        android:padding="20dp"
+        android:layout_below="@id/btnFindUnpairedDevices"/>
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="106dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="189dp"
+        android:layout_marginRight="9dp"
+        android:layout_toRightOf="@+id/btnOnOFF"
+        android:onClick="GoBack"
+        android:text="BACK" />
 
 
 </RelativeLayout>

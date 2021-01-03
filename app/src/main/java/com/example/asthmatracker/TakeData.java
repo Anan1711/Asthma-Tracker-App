@@ -36,6 +36,7 @@ public class TakeData extends AppCompatActivity implements AdapterView.OnItemCli
     public DeviceListAdapter mDeviceListAdapter;
     ListView lvNewDevices;
 
+
     // Create a BroadcastReceiver for ACTION_FOUND
     private final BroadcastReceiver mBroadcastReceiver1 = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
@@ -160,6 +161,7 @@ public class TakeData extends AppCompatActivity implements AdapterView.OnItemCli
         setContentView(R.layout.activity_take_data);
 
         Button btnOnOff = findViewById(R.id.btnOnOFF);
+        Button goBack = findViewById(R.id.btnBack);
         btnEnableDisable_Discoverable = (Button) findViewById(R.id.btnDiscoverable_on_off);
         lvNewDevices = (ListView) findViewById(R.id.lvNewDevices);
         mBTDevices = new ArrayList<>();
@@ -278,5 +280,10 @@ public class TakeData extends AppCompatActivity implements AdapterView.OnItemCli
             Log.d(TAG, "Trying to pair with " + deviceName);
             mBTDevices.get(i).createBond();
         }
+    }
+
+
+    public void GoBack(View view) {
+        startActivity(new Intent(getApplicationContext(),MainActivity.class));
     }
 }
