@@ -48,15 +48,19 @@ public class TakeData extends AppCompatActivity implements AdapterView.OnItemCli
                 switch(state){
                     case BluetoothAdapter.STATE_OFF:
                         Log.d(TAG, "onReceive: STATE OFF");
+
                         break;
                     case BluetoothAdapter.STATE_TURNING_OFF:
                         Log.d(TAG, "mBroadcastReceiver1: STATE TURNING OFF");
+                        Toast.makeText(context, "Bluetooth Disabled", Toast.LENGTH_SHORT).show();
                         break;
                     case BluetoothAdapter.STATE_ON:
                         Log.d(TAG, "mBroadcastReceiver1: STATE ON");
+
                         break;
                     case BluetoothAdapter.STATE_TURNING_ON:
                         Log.d(TAG, "mBroadcastReceiver1: STATE TURNING ON");
+                        Toast.makeText(context, "Bluetooth Enabled", Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
@@ -81,19 +85,24 @@ public class TakeData extends AppCompatActivity implements AdapterView.OnItemCli
                     //Device is in Discoverable Mode
                     case BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE:
                         Log.d(TAG, "mBroadcastReceiver2: Discoverability Enabled.");
+                        Toast.makeText(context, "Discoverability Enabled", Toast.LENGTH_SHORT).show();
                         break;
                     //Device not in discoverable mode
                     case BluetoothAdapter.SCAN_MODE_CONNECTABLE:
                         Log.d(TAG, "mBroadcastReceiver2: Discoverability Disabled. Able to receive connections.");
+                        Toast.makeText(context, "Discoverability Disabled", Toast.LENGTH_SHORT).show();
                         break;
                     case BluetoothAdapter.SCAN_MODE_NONE:
                         Log.d(TAG, "mBroadcastReceiver2: Discoverability Disabled. Not able to receive connections.");
+                        Toast.makeText(context, "Connection timeout", Toast.LENGTH_SHORT).show();
                         break;
                     case BluetoothAdapter.STATE_CONNECTING:
                         Log.d(TAG, "mBroadcastReceiver2: Connecting....");
+                        Toast.makeText(context, "Connecting...", Toast.LENGTH_SHORT).show();
                         break;
                     case BluetoothAdapter.STATE_CONNECTED:
                         Log.d(TAG, "mBroadcastReceiver2: Connected.");
+                        Toast.makeText(context, "Connected.", Toast.LENGTH_SHORT).show();
                         break;
                 }
 
@@ -115,6 +124,7 @@ public class TakeData extends AppCompatActivity implements AdapterView.OnItemCli
                 BluetoothDevice device = intent.getParcelableExtra (BluetoothDevice.EXTRA_DEVICE);
                 mBTDevices.add(device);
                 Log.d(TAG, "onReceive: " + device.getName() + ": " + device.getAddress());
+                Toast.makeText(context, "Connected to " +device.getName(), Toast.LENGTH_SHORT).show();
                 mDeviceListAdapter = new DeviceListAdapter(context, R.layout.device_adapter_view, mBTDevices);
                 lvNewDevices.setAdapter(mDeviceListAdapter);
             }
@@ -132,14 +142,17 @@ public class TakeData extends AppCompatActivity implements AdapterView.OnItemCli
                 //case1: bonded already
                 if (mDevice.getBondState() == BluetoothDevice.BOND_BONDED){
                     Log.d(TAG, "BroadcastReceiver: BOND_BONDED.");
+                    Toast.makeText(context, "Already Paired", Toast.LENGTH_SHORT).show();
                 }
                 //case2: creating a bone
                 if (mDevice.getBondState() == BluetoothDevice.BOND_BONDING) {
                     Log.d(TAG, "BroadcastReceiver: BOND_BONDING.");
+                    Toast.makeText(context, "Pairing..", Toast.LENGTH_SHORT).show();
                 }
                 //case3: breaking a bond
                 if (mDevice.getBondState() == BluetoothDevice.BOND_NONE) {
                     Log.d(TAG, "BroadcastReceiver: BOND_NONE.");
+                    Toast.makeText(context, "Paired", Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -195,6 +208,7 @@ public class TakeData extends AppCompatActivity implements AdapterView.OnItemCli
 
             IntentFilter BTIntent = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
             registerReceiver(mBroadcastReceiver1, BTIntent);
+
         }
         if(mBluetoothAdapter.isEnabled()){
             Log.d(TAG, "enableDisableBT: disabling BT.");
@@ -202,6 +216,7 @@ public class TakeData extends AppCompatActivity implements AdapterView.OnItemCli
 
             IntentFilter BTIntent = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
             registerReceiver(mBroadcastReceiver1, BTIntent);
+
         }
     }
 
