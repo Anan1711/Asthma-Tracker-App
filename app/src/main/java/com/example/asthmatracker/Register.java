@@ -108,7 +108,7 @@ public class Register extends AppCompatActivity {
                     mPhone.setError("Phone number cannot be empty");
                     return;
                 }
-                if(phone.length() < 11 || phone.length() > 11){
+                if(phone.length() < 11 ){
                     mPhone.setError("Phone number must be 11 digits");
                     return;
                 }

@@ -149,7 +149,7 @@
         android:background="@android:color/black"
         android:ems="10"
         android:fontFamily="@font/wendy_one"
-        android:hint="Weight"
+        android:hint="Weight (in kg)"
         android:inputType="textPhonetic"
         android:padding="10dp"
         android:textColor="#FFFFFF"

@@ -43,13 +43,12 @@
 
     <Button
         android:id="@+id/btnBack"
-        android:layout_width="106dp"
+        android:layout_width="116dp"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_marginLeft="189dp"
-        android:layout_marginRight="9dp"
+        android:layout_marginLeft="160dp"
+        android:layout_marginRight="12dp"
         android:layout_toRightOf="@+id/btnOnOFF"
-        android:onClick="GoBack"
         android:text="BACK" />
 
 

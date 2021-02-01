@@ -36,7 +36,6 @@ public class TakeData extends AppCompatActivity implements AdapterView.OnItemCli
     public DeviceListAdapter mDeviceListAdapter;
     ListView lvNewDevices;
 
-
     // Create a BroadcastReceiver for ACTION_FOUND
     private final BroadcastReceiver mBroadcastReceiver1 = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
@@ -48,19 +47,15 @@ public class TakeData extends AppCompatActivity implements AdapterView.OnItemCli
                 switch(state){
                     case BluetoothAdapter.STATE_OFF:
                         Log.d(TAG, "onReceive: STATE OFF");
-
                         break;
                     case BluetoothAdapter.STATE_TURNING_OFF:
                         Log.d(TAG, "mBroadcastReceiver1: STATE TURNING OFF");
-                        Toast.makeText(context, "Bluetooth Disabled", Toast.LENGTH_SHORT).show();
                         break;
                     case BluetoothAdapter.STATE_ON:
                         Log.d(TAG, "mBroadcastReceiver1: STATE ON");
-
                         break;
                     case BluetoothAdapter.STATE_TURNING_ON:
                         Log.d(TAG, "mBroadcastReceiver1: STATE TURNING ON");
-                        Toast.makeText(context, "Bluetooth Enabled", Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
@@ -85,24 +80,19 @@ public class TakeData extends AppCompatActivity implements AdapterView.OnItemCli
                     //Device is in Discoverable Mode
                     case BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE:
                         Log.d(TAG, "mBroadcastReceiver2: Discoverability Enabled.");
-                        Toast.makeText(context, "Discoverability Enabled", Toast.LENGTH_SHORT).show();
                         break;
                     //Device not in discoverable mode
                     case BluetoothAdapter.SCAN_MODE_CONNECTABLE:
                         Log.d(TAG, "mBroadcastReceiver2: Discoverability Disabled. Able to receive connections.");
-                        Toast.makeText(context, "Discoverability Disabled", Toast.LENGTH_SHORT).show();
                         break;
                     case BluetoothAdapter.SCAN_MODE_NONE:
                         Log.d(TAG, "mBroadcastReceiver2: Discoverability Disabled. Not able to receive connections.");
-                        Toast.makeText(context, "Connection timeout", Toast.LENGTH_SHORT).show();
                         break;
                     case BluetoothAdapter.STATE_CONNECTING:
                         Log.d(TAG, "mBroadcastReceiver2: Connecting....");
-                        Toast.makeText(context, "Connecting...", Toast.LENGTH_SHORT).show();
                         break;
                     case BluetoothAdapter.STATE_CONNECTED:
                         Log.d(TAG, "mBroadcastReceiver2: Connected.");
-                        Toast.makeText(context, "Connected.", Toast.LENGTH_SHORT).show();
                         break;
                 }
 
@@ -124,7 +114,6 @@ public class TakeData extends AppCompatActivity implements AdapterView.OnItemCli
                 BluetoothDevice device = intent.getParcelableExtra (BluetoothDevice.EXTRA_DEVICE);
                 mBTDevices.add(device);
                 Log.d(TAG, "onReceive: " + device.getName() + ": " + device.getAddress());
-                Toast.makeText(context, "Connected to " +device.getName(), Toast.LENGTH_SHORT).show();
                 mDeviceListAdapter = new DeviceListAdapter(context, R.layout.device_adapter_view, mBTDevices);
                 lvNewDevices.setAdapter(mDeviceListAdapter);
             }
@@ -142,17 +131,14 @@ public class TakeData extends AppCompatActivity implements AdapterView.OnItemCli
                 //case1: bonded already
                 if (mDevice.getBondState() == BluetoothDevice.BOND_BONDED){
                     Log.d(TAG, "BroadcastReceiver: BOND_BONDED.");
-                    Toast.makeText(context, "Already Paired", Toast.LENGTH_SHORT).show();
                 }
                 //case2: creating a bone
                 if (mDevice.getBondState() == BluetoothDevice.BOND_BONDING) {
                     Log.d(TAG, "BroadcastReceiver: BOND_BONDING.");
-                    Toast.makeText(context, "Pairing..", Toast.LENGTH_SHORT).show();
                 }
                 //case3: breaking a bond
                 if (mDevice.getBondState() == BluetoothDevice.BOND_NONE) {
                     Log.d(TAG, "BroadcastReceiver: BOND_NONE.");
-                    Toast.makeText(context, "Paired", Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -195,14 +181,23 @@ public class TakeData extends AppCompatActivity implements AdapterView.OnItemCli
             }
         });
 
+        goBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            }
+        });
+
     }
 
     private void enableDisableBT() {
         if(mBluetoothAdapter == null){
             Log.d(TAG, "enableDisableBT: Does not have BT capabilities.");
+            Toast.makeText(this, "Does not have BT capabilities", Toast.LENGTH_SHORT).show();
         }
         if(!mBluetoothAdapter.isEnabled()){
             Log.d(TAG, "enableDisableBT: enabling BT.");
+            Toast.makeText(this, "Enabling Bluetooth..", Toast.LENGTH_SHORT).show();
             Intent enableBTIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivity(enableBTIntent);
 
@@ -212,6 +207,7 @@ public class TakeData extends AppCompatActivity implements AdapterView.OnItemCli
         }
         if(mBluetoothAdapter.isEnabled()){
             Log.d(TAG, "enableDisableBT: disabling BT.");
+            Toast.makeText(this, "Disabling Bluetooth..", Toast.LENGTH_SHORT).show();
             mBluetoothAdapter.disable();
 
             IntentFilter BTIntent = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
@@ -223,6 +219,7 @@ public class TakeData extends AppCompatActivity implements AdapterView.OnItemCli
 
     public void btnEnableDisable_Discoverable(View view) {
         Log.d(TAG, "btnEnableDisable_Discoverable: Making device discoverable for 300 seconds.");
+        Toast.makeText(this, "Making device discoverable..", Toast.LENGTH_SHORT).show();
 
         Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
         discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
@@ -234,10 +231,12 @@ public class TakeData extends AppCompatActivity implements AdapterView.OnItemCli
 
     public void btnDiscover(View view) {
         Log.d(TAG, "btnDiscover: Looking for unpaired devices.");
+        Toast.makeText(this, "Looking for unpaired devices", Toast.LENGTH_SHORT).show();
 
         if(mBluetoothAdapter.isDiscovering()){
             mBluetoothAdapter.cancelDiscovery();
             Log.d(TAG, "btnDiscover: Canceling discovery.");
+            Toast.makeText(this, "Canceling discovery", Toast.LENGTH_SHORT).show();
 
             //check BT permissions in manifest
             checkBTPermissions();
@@ -261,7 +260,6 @@ public class TakeData extends AppCompatActivity implements AdapterView.OnItemCli
      * This method is required for all devices running API23+
      * Android must programmatically check the permissions for bluetooth. Putting the proper permissions
      * in the manifest is not enough.
-     *
      * NOTE: This will only execute on versions > LOLLIPOP because it is not needed otherwise.
      */
     private void checkBTPermissions() {
@@ -293,12 +291,9 @@ public class TakeData extends AppCompatActivity implements AdapterView.OnItemCli
         //NOTE: Requires API 17+? I think this is JellyBean
         if(Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR2){
             Log.d(TAG, "Trying to pair with " + deviceName);
+            Toast.makeText(this, "Trying to pair with "  + deviceName, Toast.LENGTH_SHORT).show();
             mBTDevices.get(i).createBond();
         }
     }
 
-
-    public void GoBack(View view) {
-        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-    }
 }

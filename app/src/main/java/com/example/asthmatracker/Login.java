@@ -89,10 +89,6 @@ public class Login extends AppCompatActivity {
 
                 });
 
-               /* Intent intent = new Intent(Login.this, PatientProfile.class);
-                intent.putExtra("EMAIL",email);
-                startActivity(intent);*/
-
             }
 
         });
@@ -109,46 +105,4 @@ public class Login extends AppCompatActivity {
 
     }
 
-   /*private void isUser(){
-        final String userEnteredEmail = mEmail.getText().toString().trim();
-        final String userEnteredPassword = mPassword.getText().toString().trim();
-
-       DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Patient");
-
-       Query checkUser = reference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).orderByChild("email").equalTo(userEnteredEmail);
-
-
-       checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
-           @Override
-           public void onDataChange(@NonNull DataSnapshot snapshot) {
-               if(snapshot.exists()){
-
-                   String passwordFromDB = snapshot.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("password").getValue(String.class);
-
-                   if(passwordFromDB.equals(userEnteredPassword)){
-
-                       String emailFromDB = snapshot.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("email").getValue(String.class);
-                       String fullNameFromDB = snapshot.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("fullName").getValue(String.class);
-                       String phoneFromDB = snapshot.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("phone").getValue(String.class);
-                       String weightFromDB = snapshot.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("weight").getValue(String.class);
-
-                       Intent intent = new Intent(getApplicationContext(), PatientProfile.class);
-
-
-                       intent.putExtra("email",emailFromDB);
-                       intent.putExtra("fullName", fullNameFromDB);
-                       intent.putExtra("weight",weightFromDB);
-                       intent.putExtra("phone", phoneFromDB);
-
-                       startActivity(intent);
-                   }
-               }
-           }
-
-           @Override
-           public void onCancelled(@NonNull DatabaseError error) {
-
-           }
-       });
-   }*/
 }
