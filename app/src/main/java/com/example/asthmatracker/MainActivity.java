@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void ClickTakeData(View view){
-        //Redirect activity to about us
+        //Redirect activity to Take Data activity
         redirectActivity(this,TakeData.class);
     }
 
@@ -77,6 +77,10 @@ public class MainActivity extends AppCompatActivity {
         //Start Activity
         activity.startActivity(intent);
 
+    }
+
+    public void viewReport(View view){
+        startActivity(new Intent(getApplicationContext(),ViewReport.class));
     }
 
     public void logout(View view){
