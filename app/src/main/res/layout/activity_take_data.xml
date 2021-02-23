@@ -60,8 +60,8 @@
 
     <ListView
         android:id="@+id/lvNewDevices"
-        android:layout_width="wrap_content"
-        android:layout_height="162dp"
+        android:layout_width="383dp"
+        android:layout_height="95dp"
         android:layout_below="@id/btnFindUnpairedDevices"
         android:layout_marginTop="128dp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void viewReport(View view){
-        startActivity(new Intent(getApplicationContext(),ViewReport.class));
+        startActivity(new Intent(getApplicationContext(),HealthInfo.class));
     }
 
     public void logout(View view){

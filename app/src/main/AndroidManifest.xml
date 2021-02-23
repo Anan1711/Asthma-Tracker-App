@@ -24,7 +24,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewReport"></activity>
+        <activity android:name=".HealthInfo"></activity>
         <activity android:name=".TakeData" />
         <activity android:name=".PatientProfile" />
         <activity android:name=".Register">
