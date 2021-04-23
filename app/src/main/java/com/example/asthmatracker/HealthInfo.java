@@ -25,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class HealthInfo extends AppCompatActivity {
 
-    EditText heartrate, spO2, temperature;
+    EditText heartrate, spO2, temperature, BP, FVC, PEF, FEV1;
     Button submit, getData;
 
 
@@ -43,6 +43,10 @@ public class HealthInfo extends AppCompatActivity {
         heartrate = findViewById(R.id.editTextTextPersonName2);
         spO2 = findViewById(R.id.editTextTextPersonName3);
         temperature = findViewById(R.id.editTextTextPersonName4);
+        BP = findViewById(R.id.editTextTextPersonName5);
+        FVC = findViewById(R.id.editTextTextPersonName6);
+        PEF = findViewById(R.id.editTextTextPersonName7);
+        FEV1 = findViewById(R.id.editTextTextPersonName8);
         submit = findViewById(R.id.button);
         getData = findViewById(R.id.button2);
 
@@ -108,6 +112,10 @@ public class HealthInfo extends AppCompatActivity {
                 healthinfo.setHeartRate(heartrate.getText().toString());
                 healthinfo.setSpO2(spO2.getText().toString());
                 healthinfo.setTemperature(temperature.getText().toString());
+                healthinfo.setBP(BP.getText().toString());
+                healthinfo.setFVC(FVC.getText().toString());
+                healthinfo.setPEF(PEF.getText().toString());
+                healthinfo.setFEV1(FEV1.getText().toString());
 
                 patientRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("healthInfo").setValue(healthinfo)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
