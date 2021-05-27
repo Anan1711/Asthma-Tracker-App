@@ -25,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class HealthInfo extends AppCompatActivity {
 
-    EditText heartrate, spO2, temperature, BP, FVC, PEF, FEV1;
+    TextView heartRate, spO2, temperature, ecg, humidity, air, roomTemp, bloodpressure;
     Button submit, getData;
 
 
@@ -34,19 +34,25 @@ public class HealthInfo extends AppCompatActivity {
     DatabaseReference HealthInfoRef1;
     DatabaseReference HealthInfoRef2;
     DatabaseReference HealthInfoRef3;
+    DatabaseReference HealthInfoRef4;
+    DatabaseReference HealthInfoRef5;
+    DatabaseReference HealthInfoRef6;
+    DatabaseReference HealthInfoRef7;
+    DatabaseReference HealthInfoRef8;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_health_info);
 
-        heartrate = findViewById(R.id.editTextTextPersonName2);
+        heartRate = findViewById(R.id.editTextTextPersonName2);
         spO2 = findViewById(R.id.editTextTextPersonName3);
         temperature = findViewById(R.id.editTextTextPersonName4);
-        BP = findViewById(R.id.editTextTextPersonName5);
-        FVC = findViewById(R.id.editTextTextPersonName6);
-        PEF = findViewById(R.id.editTextTextPersonName7);
-        FEV1 = findViewById(R.id.editTextTextPersonName8);
+        ecg = findViewById(R.id.editTextTextPersonName5);
+        humidity = findViewById(R.id.editTextTextPersonName6);
+        air = findViewById(R.id.editTextTextPersonName7);
+        roomTemp = findViewById(R.id.editTextTextPersonName8);
+        bloodpressure = findViewById(R.id.editTextTextPersonName9);
         submit = findViewById(R.id.button);
         getData = findViewById(R.id.button2);
 
@@ -55,6 +61,11 @@ public class HealthInfo extends AppCompatActivity {
         HealthInfoRef1 = db.getReference("HeartRate");
         HealthInfoRef2 = db.getReference("SpO2");
         HealthInfoRef3 = db.getReference("Temperature");
+        HealthInfoRef4 = db.getReference("ECG");
+        HealthInfoRef5 = db.getReference("Humidity");
+        HealthInfoRef6 = db.getReference("Air Quality");
+        HealthInfoRef7 = db.getReference("roomtemp");
+        HealthInfoRef8 = db.getReference("bp");
 
 
         getData.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +75,7 @@ public class HealthInfo extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             String HeartRate = snapshot.getValue().toString();
-                            heartrate.setText(HeartRate);
+                            heartRate.setText(HeartRate);
                         }
 
                         @Override
@@ -99,6 +110,71 @@ public class HealthInfo extends AppCompatActivity {
                         }
                     });
 
+                    HealthInfoRef4.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            String ECG = snapshot.getValue().toString();
+                            ecg.setText(ECG);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(HealthInfo.this, "Something went wrong! " + error.getMessage() , Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    HealthInfoRef5.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            String Humidity = snapshot.getValue().toString();
+                            humidity.setText(Humidity);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(HealthInfo.this, "Something went wrong! " + error.getMessage() , Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    HealthInfoRef6.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            String AirQuality = snapshot.getValue().toString();
+                            air.setText(AirQuality);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(HealthInfo.this, "Something went wrong! " + error.getMessage() , Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    HealthInfoRef7.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            String RoomTemp = snapshot.getValue().toString();
+                            roomTemp.setText(RoomTemp);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(HealthInfo.this, "Something went wrong! " + error.getMessage() , Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    HealthInfoRef8.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            String BP = snapshot.getValue().toString();
+                            bloodpressure.setText(BP);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(HealthInfo.this, "Something went wrong! " + error.getMessage() , Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+
                 }
             });
 
@@ -109,13 +185,14 @@ public class HealthInfo extends AppCompatActivity {
             public void onClick(View v) {
 
                 healthinfo healthinfo= new healthinfo();
-                healthinfo.setHeartRate(heartrate.getText().toString());
+                healthinfo.setHeartRate(heartRate.getText().toString());
                 healthinfo.setSpO2(spO2.getText().toString());
                 healthinfo.setTemperature(temperature.getText().toString());
-                healthinfo.setBP(BP.getText().toString());
-                healthinfo.setFVC(FVC.getText().toString());
-                healthinfo.setPEF(PEF.getText().toString());
-                healthinfo.setFEV1(FEV1.getText().toString());
+                healthinfo.setECG(ecg.getText().toString());
+                healthinfo.setHumidity(humidity.getText().toString());
+                healthinfo.setAirQuality(air.getText().toString());
+                healthinfo.setRoomTemp(roomTemp.getText().toString());
+                healthinfo.setBloodpressure(bloodpressure.getText().toString());
 
                 patientRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("healthInfo").setValue(healthinfo)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {

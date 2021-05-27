@@ -67,6 +67,10 @@ public class MainActivity extends AppCompatActivity {
         //Redirect activity to Take Data activity
         redirectActivity(this,TakeData.class);
     }
+    public void ClickECG(View view){
+        //Redirect activity to Take Data activity
+        redirectActivity(this,ECG.class);
+    }
 
 
     public static void redirectActivity(Activity activity, Class aClass) {

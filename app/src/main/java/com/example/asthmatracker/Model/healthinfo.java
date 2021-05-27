@@ -1,20 +1,22 @@
 package com.example.asthmatracker.Model;
 
 public class healthinfo{
-    private String heartRate, spO2, temperature, BP, FVC, PEF, FEV1;
+    private String heartRate, spO2, temperature, ECG, humidity, airQuality, roomTemp, bloodpressure;
 
     public healthinfo(){
 
     }
-    public healthinfo(String heartRate, String spO2, String temperature, String BP, String FVC, String PEF, String FEV1) {
+    public healthinfo(String heartRate, String spO2, String temperature, String ECG, String humidity, String airQuality, String roomTemp, String bloodpressure) {
         this.heartRate = heartRate;
         this.spO2 = spO2;
         this.temperature = temperature;
-        this.BP = BP;
-        this.FVC = FVC;
-        this.PEF = PEF;
-        this.FEV1 = FEV1;
+        this.ECG = ECG;
+        this.humidity = humidity;
+        this.airQuality = airQuality;
+        this.roomTemp = roomTemp;
+        this.bloodpressure = bloodpressure;
     }
+
 
     public String getHeartRate() {
         return heartRate;
@@ -40,35 +42,43 @@ public class healthinfo{
         this.temperature = temperature;
     }
 
-    public String getBP() {
-        return BP;
+    public String getECG() {
+        return ECG;
     }
 
-    public void setBP(String BP) {
-        this.BP = BP;
+    public void setECG(String ECG) {
+        this.ECG = ECG;
     }
 
-    public String getFVC() {
-        return FVC;
+    public String getHumidity() {
+        return humidity;
     }
 
-    public void setFVC(String FVC) {
-        this.FVC = FVC;
+    public void setHumidity(String humidity) {
+        this.humidity = humidity;
     }
 
-    public String getPEF() {
-        return PEF;
+    public String getAirQuality() {
+        return airQuality;
     }
 
-    public void setPEF(String PEF) {
-        this.PEF = PEF;
+    public void setAirQuality(String airQuality) {
+        this.airQuality = airQuality;
     }
 
-    public String getFEV1() {
-        return FEV1;
+    public String getRoomTemp() {
+        return roomTemp;
     }
 
-    public void setFEV1(String FEV1) {
-        this.FEV1 = FEV1;
+    public void setRoomTemp(String roomTemp) {
+        this.roomTemp = roomTemp;
+    }
+
+    public String getBloodpressure() {
+        return bloodpressure;
+    }
+
+    public void setBloodpressure(String bloodpressure) {
+        this.bloodpressure = bloodpressure;
     }
 }
