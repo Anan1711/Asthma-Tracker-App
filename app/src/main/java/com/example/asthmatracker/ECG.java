@@ -24,7 +24,7 @@ public class ECG extends AppCompatActivity {
     ImageView image;
     Button button, button2;
     FirebaseStorage storage = FirebaseStorage.getInstance();
-    StorageReference storageReference = storage.getReferenceFromUrl("gs://asthma-tracker-fa7ac.appspot.com").child("AD8232-Heart-rate-monitor-serial-plot-in-Arduino-IDE.jpg");
+    StorageReference storageReference = storage.getReferenceFromUrl("gs://asthma-tracker-fa7ac.appspot.com").child("ECG.jpg");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +49,6 @@ public class ECG extends AppCompatActivity {
                             Toast.makeText(ECG.this, "Something went wrong! " + e.getMessage() , Toast.LENGTH_SHORT).show();
                         }
                     });
-
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
